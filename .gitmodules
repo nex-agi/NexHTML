@@ -1,0 +1,3 @@
+[submodule "nexau"]
+	path = nexau
+	url = https://github.com/china-qijizhifeng/nexau.git
