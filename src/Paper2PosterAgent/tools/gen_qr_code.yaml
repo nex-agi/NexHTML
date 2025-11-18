@@ -1,0 +1,45 @@
+# Copyright (c) Nex-AGI. All rights reserved.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+name: generate_qr_code
+description: >-
+  - Extract arXiv link from first page of PDF and generate QR code for abstract page
+  - Uses VLM to judge if PDF is academic paper and extract arXiv link
+  - Automatically converts arxiv PDF links to abstract page links
+  - Useful for adding paper links to academic posters
+  - Returns path to generated QR code image
+
+input_schema:
+  type: object
+  properties:
+    pdf_path:
+      type: string
+      description: Path to the PDF file to extract arXiv link from
+
+    output_path:
+      type: string
+      description: Optional output path for QR code image (default is qr_code.png in same directory)
+
+    api_key:
+      type: string
+      description: Optional OpenAI API key (uses environment variable if not provided)
+
+    api_base:
+      type: string
+      description: Optional OpenAI API base URL (uses environment variable if not provided)
+
+  required:
+    - pdf_path
+  additionalProperties: false
+  $schema: http://json-schema.org/draft-07/schema#

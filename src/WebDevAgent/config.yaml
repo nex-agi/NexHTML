@@ -1,0 +1,55 @@
+# Copyright (c) Nex-AGI. All rights reserved.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+name: WebDevAgent
+max_context_tokens: 100000
+system_prompt: ./system-prompt.md
+system_prompt_type: jinja
+
+tools:
+  - name: WebImageSearch
+    yaml_path: tools/web_img_search.yaml
+    binding: src.WebDevAgent.tools.web_img_search:web_img_search
+  - name: Read
+    yaml_path: ../../nexau/examples/fake_claude_code/tools/Read.tool.yaml
+    binding: nexau.archs.tool.builtin.file_tools.file_read_tool:file_read_tool
+  - name: Write
+    yaml_path: ../../nexau/examples/fake_claude_code/tools/Write.tool.yaml
+    binding: nexau.archs.tool.builtin.file_tools.file_write_tool:file_write_tool
+  - name: Edit
+    yaml_path: ../../nexau/examples/fake_claude_code/tools/Edit.tool.yaml
+    binding: nexau.archs.tool.builtin.file_tools.file_edit_tool:file_edit_tool
+  - name: MultiEdit
+    yaml_path: ../../nexau/examples/fake_claude_code/tools/MultiEdit.tool.yaml
+    binding: nexau.archs.tool.builtin.multiedit_tool:multiedit_tool
+  # === Search and Navigation ===
+  - name: Grep
+    yaml_path: ../../nexau/examples/fake_claude_code/tools/Grep.tool.yaml
+    binding: nexau.archs.tool.builtin.file_tools.grep_tool:grep_tool
+  - name: Glob
+    yaml_path: ../../nexau/examples/fake_claude_code/tools/Glob.tool.yaml
+    binding: nexau.archs.tool.builtin.file_tools.glob_tool:glob_tool
+  - name: LS
+    yaml_path: ../../nexau/examples/fake_claude_code/tools/Ls.tool.yaml
+    binding: nexau.archs.tool.builtin.ls_tool:ls_tool
+  # === Task Management ===
+  - name: TodoWrite
+    yaml_path: ../../nexau/examples/fake_claude_code/tools/TodoWrite.tool.yaml
+    binding: nexau.archs.tool.builtin.todo_write:todo_write
+  
+llm_config:
+  model: 
+  base_url: 
+  temperature: 0.6
+  max_tokens: 64000

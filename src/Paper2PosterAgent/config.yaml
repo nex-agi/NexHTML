@@ -1,0 +1,95 @@
+# Copyright (c) Nex-AGI. All rights reserved.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+name: Paper2PosterAgent
+max_context_tokens: 100000
+system_prompt: ./system-prompt.md
+system_prompt_type: jinja
+
+tools:
+  # === PDF Processing ===
+  - name: PDF2Markdown
+    yaml_path: tools/paper2md.yaml
+    binding: src.Paper2PosterAgent.tools.paper2md_tool:pdf_to_markdown_tool
+
+  # === Image Processing ===
+  - name: ImageCaption
+    yaml_path: tools/image_caption.yaml
+    binding: src.Paper2PosterAgent.tools.image_caption_tool:image_caption_tool
+
+  # === Logo Management ===
+  - name: LogoManager
+    yaml_path: tools/logo_manager.yaml
+    binding: src.Paper2PosterAgent.tools.logo_manager_tool:logo_manager_tool
+
+  # === QR Code Generation ===
+  - name: GenerateQRCode
+    yaml_path: tools/gen_qr_code.yaml
+    binding: src.Paper2PosterAgent.tools.gen_qr_code_tool:gen_qr_code_tool
+
+  # === Layout Analysis ===
+  - name: HeightDetect
+    yaml_path: tools/height_detect.yaml
+    binding: src.Paper2PosterAgent.tools.height_detect_tool:height_detect_tool
+
+  - name: LayoutBalance
+    yaml_path: tools/layout_balance.yaml
+    binding: src.Paper2PosterAgent.tools.layout_balance_tool:layout_balance_tool
+
+  # === Poster Generation ===
+  - name: PosterGeneration
+    yaml_path: tools/poster.yaml
+    binding: src.Paper2PosterAgent.tools.poster_tool:poster_tool
+
+  # === Screenshot ===
+  # - name: Screenshot
+  #   yaml_path: tools/screenshot.yaml
+  #   binding: src.Paper2PosterAgent.tools.screenshot_tool:screenshot_tool
+
+  # === File Operations ===
+  - name: Read
+    yaml_path: ../../nexau/examples/fake_claude_code/tools/Read.tool.yaml
+    binding: nexau.archs.tool.builtin.file_tools.file_read_tool:file_read_tool
+
+  # - name: Write
+  #   yaml_path: ../../nexau/examples/fake_claude_code/tools/Write.tool.yaml
+  #   binding: nexau.archs.tool.builtin.file_tools.file_write_tool:file_write_tool
+
+  # - name: Edit
+  #   yaml_path: ../../nexau/examples/fake_claude_code/tools/Edit.tool.yaml
+  #   binding: nexau.archs.tool.builtin.file_tools.file_edit_tool:file_edit_tool
+
+  # # === Search and Navigation ===
+  # - name: Grep
+  #   yaml_path: ../../nexau/examples/fake_claude_code/tools/Grep.tool.yaml
+  #   binding: nexau.archs.tool.builtin.file_tools.grep_tool:grep_tool
+
+  # - name: Glob
+  #   yaml_path: ../../nexau/examples/fake_claude_code/tools/Glob.tool.yaml
+  #   binding: nexau.archs.tool.builtin.file_tools.glob_tool:glob_tool
+
+  # - name: LS
+  #   yaml_path: ../../nexau/examples/fake_claude_code/tools/Ls.tool.yaml
+  #   binding: nexau.archs.tool.builtin.ls_tool:ls_tool
+
+  # === Task Management ===
+  - name: TodoWrite
+    yaml_path: ../../nexau/examples/fake_claude_code/tools/TodoWrite.tool.yaml
+    binding: nexau.archs.tool.builtin.todo_write:todo_write
+
+llm_config:
+  model: 
+  base_url: 
+  temperature: 0.6
+  max_tokens: 64000

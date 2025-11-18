@@ -1,0 +1,83 @@
+# Copyright (c) Nex-AGI. All rights reserved.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+name: logo_manager
+description: >-
+  Manage institutional logos for academic posters with intelligent abbreviation matching.
+
+  KEY FEATURES:
+  - Smart abbreviation matching: MIT = Massachusetts Institute of Technology, CMU = Carnegie Mellon University
+  - Fuzzy matching with 5-level algorithm: exact → abbreviation → substring → token overlap → similarity
+  - Auto-download from web if not found locally
+  - Supports conferences (NeurIPS, CVPR) and institutions (Stanford, MIT)
+
+  OPERATIONS:
+  - get_logo: Retrieve logo file path (auto-download if missing)
+  - get_logo_url: Get logo image URL from web search
+  - list_logos: List all available logos in database
+  - extract_institution: Extract institution name from paper content
+  - get_dimensions: Calculate logo dimensions with aspect ratio
+
+input_schema:
+  type: object
+  properties:
+    action:
+      type: string
+      enum: ["get_logo", "get_logo_url", "list_logos", "extract_institution", "get_dimensions"]
+      description: "Action to perform: get_logo (get logo path), get_logo_url (get logo URL), list_logos (list all), extract_institution (extract from PDF), get_dimensions (get image dimensions)"
+
+    base_path:
+      type: string
+      default: "logo_store"
+      description: Base path for logo storage directory
+
+    name:
+      type: string
+      description: >-
+        Institution or conference name (required for get_logo and get_logo_url actions).
+        Supports abbreviations and full names.
+        Examples:
+        - Abbreviations: "MIT", "CMU", "UCB", "NYU", "NeurIPS", "CVPR", "ICLR"
+        - Full names: "Massachusetts Institute of Technology", "Carnegie Mellon University", "Stanford University"
+        - Companies: "Google", "DeepMind", "Meta", "OpenAI", "Microsoft Research"
+        - With years: "NeurIPS 2024" (year will be auto-removed)
+        - Variations: "UC Berkeley" → matches "UCB", "Deep Mind" → matches "DeepMind"
+
+    category:
+      type: string
+      enum: ["auto", "conference", "institute"]
+      default: "auto"
+      description: Category of logo to search (auto, conference, or institute)
+
+    use_google:
+      type: boolean
+      default: false
+      description: Whether to use Google Custom Search API (requires API keys in .env)
+
+    paper_content:
+      type: string
+      description: Paper content in markdown format (required for extract_institution action)
+
+    logo_path:
+      type: string
+      description: Logo image file path (required for get_dimensions action)
+
+    target_height:
+      type: number
+      description: Target height in inches for logo dimensions (required for get_dimensions action)
+
+  required:
+    - action
+  additionalProperties: true
+  $schema: http://json-schema.org/draft-07/schema#

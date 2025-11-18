@@ -1,0 +1,41 @@
+# Copyright (c) Nex-AGI. All rights reserved.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+name: image_caption
+description: >-
+  - Generate captions and descriptions for images extracted from academic papers
+  - Analyzes image content and context from surrounding markdown text
+  - Creates structured JSON with captions, descriptions, and metadata
+  - Essential step before poster generation for proper image labeling
+
+input_schema:
+  type: object
+  properties:
+    md_file_path:
+      type: string
+      description: Path to Markdown file containing paper content
+
+    images_dir:
+      type: string
+      description: Directory containing extracted images
+
+    output_json_path:
+      type: string
+      description: Optional output path for captions JSON (default is image_captions.json)
+
+  required:
+    - md_file_path
+    - images_dir
+  additionalProperties: false
+  $schema: http://json-schema.org/draft-07/schema#

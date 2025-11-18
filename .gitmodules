@@ -1,3 +1,6 @@
 [submodule "nexau"]
 	path = nexau
-	url = https://github.com/china-qijizhifeng/nexau.git
+	url = https://github.com/nex-agi/NexAU.git
+[submodule "MinerU"]
+	path = MinerU
+	url = https://github.com/opendatalab/MinerU.git

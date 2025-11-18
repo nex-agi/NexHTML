@@ -1,0 +1,38 @@
+# Copyright (c) Nex-AGI. All rights reserved.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+name: height_detect
+description: >-
+  - Detect and calculate column heights in HTML poster layout
+  - Analyzes three-column poster structure using browser automation
+  - Checks if column heights are balanced (within 20% difference)
+  - Provides detailed suggestions for content redistribution
+  - Returns height metrics and balance recommendations
+
+input_schema:
+  type: object
+  properties:
+    html_path:
+      type: string
+      description: Path to HTML file to analyze (must be a valid HTML poster file)
+
+    available_height:
+      type: integer
+      default: 1000
+      description: Available height per column in pixels (default 1000px)
+
+  required:
+    - html_path
+  additionalProperties: false
+  $schema: http://json-schema.org/draft-07/schema#
