@@ -6,9 +6,10 @@
 
 ## 项目简介
 
-NexHTML 是基于 [Nexau 框架](https://github.com/nex-agi/NexAU) 开发的 AI Agent 平台，目前包含两个 Agent：
+NexHTML 是基于 [Nexau 框架](https://github.com/nex-agi/NexAU) 开发的 AI Agent 平台，目前包含三个 Agent：
 - **WebDevAgent**：自动生成 HTML 网页
 - **Paper2PosterAgent**：将学术论文转换为海报
+- **DatavisSearchAgent**：数据可视化与分析
 
 ## 案例展示
 
@@ -42,6 +43,16 @@ NexHTML 是基于 [Nexau 框架](https://github.com/nex-agi/NexAU) 开发的 AI 
 - AI 为图片生成标题和描述
 - 自动添加学校 Logo
 - 生成论文二维码
+
+### DatavisSearchAgent
+
+端到端数据可视化分析系统，包含：
+- 多源数据搜索与收集（支持关键词扩展和交叉验证）
+- 数据清洗与质量评估
+- 状态化 Python 执行（支持 pandas/numpy 数据探索）
+- 交互式仪表板生成（基于 Plotly 的 HTML 可视化）
+- HTTP 服务部署（自动启动本地服务器）
+- Kaggle 数据集集成（直接下载 Kaggle 平台数据集）
 
 ## 快速开始
 
@@ -82,6 +93,11 @@ UNSPLASH_ACCESS_KEYS=你的Unsplash_Key
 VLM_MODEL=视觉模型名
 VLM_BASE_URL=视觉模型地址
 VLM_API_KEY=视觉模型密钥
+
+# 可选：DatavisSearchAgent 需要
+SERPER_API_KEY=你的Serper密钥
+KAGGLE_USERNAME=你的Kaggle用户名
+KAGGLE_KEY=你的Kaggle密钥
 ```
 
 ### 3. 运行
@@ -133,6 +149,29 @@ uv run mineru-api
 uv run src/Paper2PosterAgent/start.py
 ```
 
+**DatavisSearchAgent：**
+
+**前置要求：**
+
+在启动 DatavisSearchAgent 之前，你需要：
+
+1. **申请 Serper API Key** - 访问 [Serper.dev](https://serper.dev/) 注册并获取 API Key，用于网络搜索功能
+2. **配置 Kaggle API 凭证**（可选）- 用于从 Kaggle 下载数据集
+3. **更新 `.env` 文件**配置：
+   ```bash
+   SERPER_API_KEY=你的serper密钥
+
+   # 可选：用于 Kaggle 数据集下载
+   KAGGLE_USERNAME=你的kaggle用户名
+   KAGGLE_KEY=你的kaggle密钥
+   ```
+
+**启动命令：**
+
+```bash
+uv run python src/DatavisSearchAgent/start.py
+```
+
 ## 详细说明
 
 ### WebDevAgent 工作流程
@@ -153,6 +192,20 @@ PDF 输入 → 解析为 Markdown → 图片标注 → 添加 Logo → 生成二
 
 注意：需要先启动 MinerU 服务（`cd MinerU && python -m mineru.server`）
 
+### DatavisSearchAgent 工作流程
+
+```
+用户需求 → 创建会话目录 → 数据收集 → Python 分析 → 生成仪表板 → HTTP 服务部署
+```
+
+配置文件：`src/DatavisSearchAgent/config.yaml`
+
+工作流程说明：
+1. **数据收集阶段**：多源网络搜索、Kaggle 数据集下载、数据结构化
+2. **Python 分析阶段**：使用 pandas/numpy 进行数据探索和图表规划
+3. **仪表板生成阶段**：基于 Plotly.js 创建交互式图表，使用 PapaParse 动态读取 CSV
+4. **HTTP 服务阶段**：启动本地服务器（默认端口 8765）展示仪表板
+
 ## 项目结构
 
 ```
@@ -165,7 +218,11 @@ NexHTML/
     │   ├── start.py
     │   ├── config.yaml
     │   └── tools/
-    └── Paper2PosterAgent/  # 学术海报 Agent
+    ├── Paper2PosterAgent/  # 学术海报 Agent
+    │   ├── start.py
+    │   ├── config.yaml
+    │   └── tools/
+    └── DatavisSearchAgent/ # 数据可视化 Agent
         ├── start.py
         ├── config.yaml
         └── tools/
@@ -178,6 +235,7 @@ NexHTML/
 - [MinerU](https://github.com/opendatalab/MinerU) - PDF 解析
 - [Paper2Poster](https://github.com/Paper2Poster/Paper2Poster) - 海报生成
 - [Unsplash](https://unsplash.com/) - 图片 API
+- [Serper](https://serper.dev/) - 搜索 API
 
 ---
 

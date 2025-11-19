@@ -67,4 +67,4 @@ llm_config:
   model:
   base_url:
   temperature: 0.6
-  max_tokens: 32768
+  max_tokens: 64000

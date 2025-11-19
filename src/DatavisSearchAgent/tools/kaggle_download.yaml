@@ -23,6 +23,14 @@ description: >-
 
   How to obtain API credentials: Log in to Kaggle → Account → API → Create New API Token
 
+  Note: REMEMBER YOU MUST use the following format to call the kaggle_download:
+  <tool_use>
+    <tool_name>kaggle_download</tool_name>
+    <parameter>
+      <dataset_name>...</dataset_name>
+      <download_path>...</download_path>
+    </parameter>
+  </tool_use>
 input_schema:
   type: object
   properties:
