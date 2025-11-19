@@ -93,6 +93,22 @@ VLM_API_KEY=视觉模型密钥
 
 **WebDevAgent：**
 
+**前置要求：**
+
+在启动 WebDevAgent 之前，你需要：
+
+1. **申请 Unsplash API Key** - 访问 [Unsplash Developers](https://unsplash.com/developers) 注册并获取 API Key，用于图片搜索功能
+2. **配置 VLM 模型** - 设置视觉语言模型来生成图片描述
+3. **更新 `.env` 文件**配置：
+   ```bash
+   UNSPLASH_ACCESS_KEYS=你的unsplash密钥
+   IMAGE_CAPTIONER_MODEL=你的vlm模型名
+   IMAGE_CAPTIONER_BASE_URL=你的vlm地址
+   IMAGE_CAPTIONER_API_KEY=你的vlm密钥
+   ```
+
+**启动命令：**
+
 ```bash
 cd src/WebDevAgent
 python start.py

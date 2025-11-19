@@ -170,6 +170,22 @@ See [Configuration](#configuration) section for detailed configuration.
 
 #### Launch WebDevAgent
 
+**Prerequisites:**
+
+Before launching WebDevAgent, you need to:
+
+1. **Apply for Unsplash API Key** - Visit [Unsplash Developers](https://unsplash.com/developers) to register and obtain your API key for image search functionality
+2. **Configure VLM for Image Captioning** - Set up a Vision Language Model to generate image descriptions
+3. **Update `.env` file** with your credentials:
+   ```bash
+   UNSPLASH_ACCESS_KEYS=your_unsplash_key
+   IMAGE_CAPTIONER_MODEL=your_vlm_model
+   IMAGE_CAPTIONER_BASE_URL=your_vlm_url
+   IMAGE_CAPTIONER_API_KEY=your_vlm_key
+   ```
+
+**Launch Command:**
+
 ```bash
 uv run python src/WebDevAgent/start.py
 ```
