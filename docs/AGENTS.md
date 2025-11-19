@@ -23,11 +23,6 @@ User Request → Image Search → AI Annotation → Generate HTML → User Feedb
 - File operation tools (Read, Write, Edit, Grep, Glob)
 - TodoWrite - Task management
 
-**Launch Command**:
-```bash
-cd src/WebDevAgent && python start.py
-```
-
 ---
 
 ## 📊 Paper2PosterAgent
@@ -57,12 +52,6 @@ Screenshot Preview
 
 **System Prompt**: `src/Paper2PosterAgent/system-prompt.md`
 
-**Prerequisites**:
-- **MinerU Service**: Must start PDF parsing service first
-  ```bash
-  cd MinerU && python -m mineru.server
-  ```
-
 **Core Tools**:
 | Tool Name | Bound Function | Config File |
 |-----------|----------------|-------------|
@@ -74,11 +63,6 @@ Screenshot Preview
 | LayoutBalance | `layout_balance_tool` | `tools/layout_balance.yaml` |
 | PosterGeneration | `poster_tool` | `tools/poster.yaml` |
 | Screenshot | `screenshot_tool` | `tools/screenshot.yaml` |
-
-**Launch Command**:
-```bash
-cd src/Paper2PosterAgent && python start.py
-```
 
 ---
 
