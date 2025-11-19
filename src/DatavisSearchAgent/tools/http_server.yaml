@@ -1,0 +1,33 @@
+# Copyright (c) Nex-AGI. All rights reserved.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+name: http_server
+description: >-
+  Non-blocking HTTP service startup tool. Starts a local service using UV in the specified directory and port, and returns an accessible URL.
+  The server automatically finds an available port if the specified port is occupied.
+
+input_schema:
+  type: object
+  properties:
+    serve_dir:
+      type: string
+      description: Absolute path of the directory to be served (under PROJECT ROOT)
+    port:
+      type: integer
+      description: Starting port, automatically incremented when conflicts occur
+      default: 8765
+  required:
+    - serve_dir
+  additionalProperties: false
+  $schema: http://json-schema.org/draft-07/schema#

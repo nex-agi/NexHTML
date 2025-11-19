@@ -27,6 +27,7 @@ dependencies = [
     "qrcode",
     "pdf2image",
     "playwright==1.56.0",
+    "kagglehub>=0.3.13",
 ]
 
 [build-system]

@@ -1,0 +1,39 @@
+# Copyright (c) Nex-AGI. All rights reserved.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+name: kaggle_download
+description: >-
+  Kaggle dataset download tool. Uses the kagglehub library to download the specified Kaggle dataset to the specified path.
+  The data will be automatically downloaded and extracted to the target directory.
+
+  Authentication methods:
+  1. Recommended: Configure KAGGLE_USERNAME and KAGGLE_KEY in the .env file
+  2. Alternative: Use the ~/.kaggle/kaggle.json file (traditional method)
+
+  How to obtain API credentials: Log in to Kaggle → Account → API → Create New API Token
+
+input_schema:
+  type: object
+  properties:
+    dataset_name:
+      type: string
+      description: Kaggle dataset name, in the format "username/dataset-name" (e.g., "uciml/iris")
+    download_path:
+      type: string
+      description: Target path for dataset download (absolute path)
+  required:
+    - dataset_name
+    - download_path
+  additionalProperties: false
+  $schema: http://json-schema.org/draft-07/schema#
