@@ -131,6 +131,7 @@ git submodule update --init --recursive
 
 ```bash
 # Install MinerU (PDF parsing engine)
+uv pip install -e .
 uv add -U "mineru[core]" -i https://mirrors.aliyun.com/pypi/simple
 
 # Install Nexau framework
@@ -172,7 +173,7 @@ See [Configuration](#configuration) section for detailed configuration.
 
 ```bash
 cd src/WebDevAgent
-python start.py
+uv run python start.py
 ```
 
 **Example Dialog:**
