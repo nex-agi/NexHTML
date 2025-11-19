@@ -55,10 +55,14 @@ git clone https://github.com/nex-agi/NexHTML.git
 cd NexHTML
 git submodule update --init --recursive
 
-# 安装依赖（推荐使用 uv）
-uv add -U "mineru[core]" -i https://mirrors.aliyun.com/pypi/simple
-cd nexau && uv pip install -e . && cd ..
+# 一键安装所有依赖（包括 MinerU 和 Nexau）
+uv pip install -e .
 ```
+
+> **注意**: 安装过程会自动包含：
+> - MinerU（PDF 解析引擎）及其所有核心依赖
+> - Nexau 框架（来自 ./nexau 子模块）
+> - 所有其他必需的包
 
 ### 2. 配置
 
@@ -98,12 +102,10 @@ python start.py
 
 ```bash
 # 先启动 MinerU 服务（另开一个终端）
-cd MinerU
-python -m mineru.server
+uv run mineru-api
 
 # 再启动 Agent
-cd src/Paper2PosterAgent
-python start.py
+uv run src/Paper2PosterAgent/start.py
 ```
 
 ## 详细说明

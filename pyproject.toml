@@ -19,6 +19,7 @@ readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
     "mineru[core]>=2.6.4",
+    "nexau @ file:///${PROJECT_ROOT}/nexau",
     "prompt-toolkit>=3.0.0",
     "requests>=2.31.0",
     "python-dotenv>=1.0.0",
@@ -27,3 +28,15 @@ dependencies = [
     "pdf2image",
     "playwright==1.56.0",
 ]
+
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["*"]
+
+[tool.uv.sources]
+mineru = { path = "MinerU", editable = true }
+nexau = { path = "nexau", editable = true }

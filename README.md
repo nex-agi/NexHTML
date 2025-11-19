@@ -130,22 +130,21 @@ git submodule update --init --recursive
 #### Using uv (Recommended)
 
 ```bash
-# Install MinerU (PDF parsing engine)
+# One-command installation (installs everything including MinerU and Nexau)
 uv pip install -e .
-uv add -U "mineru[core]" -i https://mirrors.aliyun.com/pypi/simple
-
-# Install Nexau framework
-cd nexau
-uv pip install -e .
-cd ..
 ```
 
 #### Using pip
 
 ```bash
-pip install -e ".[core]"
-pip install -e ./nexau
+# One-command installation
+pip install -e .
 ```
+
+> **Note**: The installation automatically includes:
+> - MinerU (PDF parsing engine) with all core dependencies
+> - Nexau framework (from ./nexau submodule)
+> - All other required packages
 
 ### 4. Configure Environment Variables
 
@@ -172,8 +171,7 @@ See [Configuration](#configuration) section for detailed configuration.
 #### Launch WebDevAgent
 
 ```bash
-cd src/WebDevAgent
-uv run python start.py
+uv run python src/WebDevAgent/start.py
 ```
 
 **Example Dialog:**
@@ -187,12 +185,10 @@ uv run python start.py
 ```bash
 # First start MinerU service (PDF parsing)
 # In another terminal:
-cd MinerU
-python -m mineru.server
+uv run mineru-api
 
 # Start Agent
-cd src/Paper2PosterAgent
-python start.py
+uv run src/Paper2PosterAgent/start.py
 ```
 
 **Example Dialog:**
