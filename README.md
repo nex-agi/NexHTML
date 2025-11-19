@@ -141,11 +141,6 @@ uv pip install -e .
 pip install -e .
 ```
 
-> **Note**: The installation automatically includes:
-> - MinerU (PDF parsing engine) with all core dependencies
-> - Nexau framework (from ./nexau submodule)
-> - All other required packages
-
 ### 4. Configure Environment Variables
 
 Copy and edit `.env` file:

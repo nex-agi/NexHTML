@@ -59,11 +59,6 @@ git submodule update --init --recursive
 uv pip install -e .
 ```
 
-> **注意**: 安装过程会自动包含：
-> - MinerU（PDF 解析引擎）及其所有核心依赖
-> - Nexau 框架（来自 ./nexau 子模块）
-> - 所有其他必需的包
-
 ### 2. 配置
 
 复制 `.env.example` 为 `.env`，填入你的 API Key：
