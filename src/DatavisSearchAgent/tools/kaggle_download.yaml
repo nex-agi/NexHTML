@@ -24,7 +24,6 @@ description: >-
   How to obtain API credentials: Log in to Kaggle → Account → API → Create New API Token
 
   !!!Note: REMEMBER YOU MUST use VALID tool call format!!!
-  !!!DO NOT USE INVALID FORMAT like leading by <tool_calls> tag!!!
   The VALID tool call format for kaggle_download is either leading by <tool_use> or <use_parallel_tool_calls> tag:
   !For a single kaggle_download tool call, use:
     <tool_use>
@@ -46,6 +45,7 @@ description: >-
       <parameter>...</parameter>
     </parallel_tool>
     </use_parallel_tool_calls>
+  !!!DO NOT USE INVALID FORMAT, Only use <tool_use> or <use_parallel_tool_calls>!!!
 input_schema:
   type: object
   properties:

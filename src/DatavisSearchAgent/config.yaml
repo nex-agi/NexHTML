@@ -19,15 +19,15 @@ system_prompt_type: jinja
 
 tools:
   # === Custom Tools ===
-  - name: HTTPServer
+  - name: http_server
     yaml_path: tools/http_server.yaml
     binding: src.DatavisSearchAgent.tools.http_server_tool:http_server
 
-  - name: InteractivePythonExecutor
+  - name: interactive_python_executor
     yaml_path: tools/interactive_python_executor.yaml
     binding: src.DatavisSearchAgent.tools.interactive_python_executor_tool:interactive_python_executor
 
-  - name: KaggleDownload
+  - name: kaggle_download
     yaml_path: tools/kaggle_download.yaml
     binding: src.DatavisSearchAgent.tools.kaggle_download_tool:kaggle_download
 
