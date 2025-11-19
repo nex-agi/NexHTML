@@ -185,13 +185,21 @@ Before launching WebDevAgent, you need to:
 uv run python src/WebDevAgent/start.py
 ```
 
-**Example Dialog:**
-```
-📝 Your task: Generate a tech-style product landing page
-🤖 WebDevAgent: Generating for you...
-```
-
 #### Launch Paper2PosterAgent
+
+**Prerequisites:**
+
+Before launching Paper2PosterAgent, you need to:
+
+1. **Configure VLM (Vision Language Model)** - Set up a Vision Language Model for image analysis and caption generation
+2. **Update `.env` file** with your VLM credentials:
+   ```bash
+   VLM_MODEL=your_vlm_model
+   VLM_BASE_URL=your_vlm_url
+   VLM_API_KEY=your_vlm_key
+   ```
+
+**Launch Commands:**
 
 ```bash
 # First start MinerU service (PDF parsing)
@@ -200,17 +208,6 @@ uv run mineru-api
 
 # Start Agent
 uv run src/Paper2PosterAgent/start.py
-```
-
-**Example Dialog:**
-```
-📝 Your task: Convert paper.pdf to academic poster
-🤖 Paper2PosterAgent:
-1️⃣ Parsing PDF...
-2️⃣ Generating image annotations...
-3️⃣ Extracting arXiv link...
-4️⃣ Generating poster HTML...
-✅ Poster generated: poster.html
 ```
 
 ---

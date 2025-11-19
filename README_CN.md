@@ -111,6 +111,20 @@ python start.py
 
 **Paper2PosterAgent：**
 
+**前置要求：**
+
+在启动 Paper2PosterAgent 之前，你需要：
+
+1. **配置 VLM 视觉语言模型** - 设置视觉语言模型用于图片分析和标题生成
+2. **更新 `.env` 文件**配置：
+   ```bash
+   VLM_MODEL=你的vlm模型名
+   VLM_BASE_URL=你的vlm地址
+   VLM_API_KEY=你的vlm密钥
+   ```
+
+**启动命令：**
+
 ```bash
 # 先启动 MinerU 服务（另开一个终端）
 uv run mineru-api
