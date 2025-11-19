@@ -9,7 +9,7 @@
 
 [English](README.md) | [中文](README_CN.md)
 
-[Quick Start](#quick-start) • [Agent Overview](docs/AGENTS.md) • [Configuration](#configuration) • [Project Structure](docs/PROJECT_STRUCTURE.md)
+[Quick Start](#quick-start) • [Agent Overview](docs/AGENTS.md)
 
 </div>
 
@@ -22,8 +22,6 @@
 - [Features](#features)
 - [Quick Start](#quick-start)
 - [Agent Overview](docs/AGENTS.md)
-- [Configuration](#configuration)
-- [Project Structure](docs/PROJECT_STRUCTURE.md)
 
 ---
 
@@ -159,8 +157,6 @@ LLM_BASE_URL=https://api.openai.com/v1
 LLM_API_KEY=your_api_key_here
 ```
 
-See [Configuration](#configuration) section for detailed configuration.
-
 ### 5. Launch Agent
 
 #### Launch WebDevAgent
@@ -210,32 +206,9 @@ uv run mineru-api
 uv run src/Paper2PosterAgent/start.py
 ```
 
----
+### 6. Optional: Configure Langfuse Monitoring
 
-## 🎯 Agent Overview
-
-For detailed information about each Agent (configuration, tools, workflows), please see **[Agent Overview Documentation →](docs/AGENTS.md)**
-
----
-
-## ⚙️ Configuration
-
-### Configuration File Structure
-
-```
-.env                          # Environment variables config (core)
-├── Core LLM Configuration    # Shared by all Agents
-├── Monitoring & Observability # Langfuse monitoring
-├── WebDevAgent               # WebDevAgent specific config
-└── Paper2PosterAgent         # Paper2PosterAgent specific config
-```
-
-### Core Configuration Items
-
-#### 1. LLM Configuration (Required)
-
-
-#### 2. Langfuse Monitoring (Optional)
+To enable observability and monitoring with Langfuse, add the following to your `.env` file:
 
 ```bash
 LANGFUSE_SECRET_KEY=sk-lf-xxx
@@ -243,52 +216,13 @@ LANGFUSE_PUBLIC_KEY=pk-lf-xxx
 LANGFUSE_HOST=http://your-langfuse-host:port
 ```
 
-#### 3. WebDevAgent Configuration
-
-```bash
-# Unsplash image search (supports multiple API keys, comma-separated)
-UNSPLASH_ACCESS_KEYS=key1,key2,key3
-
-# Image annotation VLM
-IMAGE_CAPTIONER_MODEL=vlm_model_name
-IMAGE_CAPTIONER_BASE_URL=vlm_base_url
-IMAGE_CAPTIONER_API_KEY=sk-xxx
-```
-
-#### 4. Paper2PosterAgent Configuration
-
-```bash
-# MinerU PDF parsing service
-PAPER2MD_API_URL=http://127.0.0.1:8000/file_parse
-
-# VLM Vision Language Model
-VLM_MODEL=vlm_model_name
-VLM_BASE_URL=vlm_base_url
-VLM_API_KEY=sk-xxx
-VLM_TIMEOUT=1000
-VLM_MAX_TOKENS=6000
-VLM_TEMPERATURE=0.9
-
-# arXiv paper judgment
-ARXIV_JUDGE_MODEL=vlm_model_name
-ARXIV_JUDGE_BASE_URL=vlm_base_url
-ARXIV_JUDGE_API_KEY=sk-xxx
-ARXIV_JUDGE_MAX_TOKENS=8000
-ARXIV_JUDGE_TIMEOUT=1000
-
-```
-
-### Configuration Priority
-
-1. Environment variables in `.env` file
-2. System environment variables
-3. Default values in code
+See **[Configuration Guide →](docs/CONFIGURATION.md)** for more configuration details.
 
 ---
 
-## 📁 Project Structure
+## 🎯 Agent Overview
 
-For detailed project structure and directory organization, please see **[Project Structure Documentation →](docs/PROJECT_STRUCTURE.md)**
+For detailed information about each Agent (configuration, tools, workflows), please see **[Agent Overview Documentation →](docs/AGENTS.md)**
 
 ---
 
