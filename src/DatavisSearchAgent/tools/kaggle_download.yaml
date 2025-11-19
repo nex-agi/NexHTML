@@ -23,14 +23,29 @@ description: >-
 
   How to obtain API credentials: Log in to Kaggle → Account → API → Create New API Token
 
-  Note: REMEMBER YOU MUST use the following format to call the kaggle_download:
-  <tool_use>
-    <tool_name>kaggle_download</tool_name>
-    <parameter>
-      <dataset_name>...</dataset_name>
-      <download_path>...</download_path>
-    </parameter>
-  </tool_use>
+  !!!Note: REMEMBER YOU MUST use VALID tool call format!!!
+  !!!DO NOT USE INVALID FORMAT like leading by <tool_calls> tag!!!
+  The VALID tool call format for kaggle_download is either leading by <tool_use> or <use_parallel_tool_calls> tag:
+  !For a single kaggle_download tool call, use:
+    <tool_use>
+      <tool_name>kaggle_download</tool_name>
+      <parameter>
+        <dataset_name>...</dataset_name>
+        <download_path>...</download_path>
+      </parameter>
+    </tool_use>
+
+  !For parallel execution of multiple tools that include kaggle_download, use:
+    <use_parallel_tool_calls>
+    <parallel_tool>
+      <tool_name>tool1</tool_name>
+      <parameter>...</parameter>
+    </parallel_tool>
+    <parallel_tool>
+      <tool_name>tool2</tool_name>
+      <parameter>...</parameter>
+    </parallel_tool>
+    </use_parallel_tool_calls>
 input_schema:
   type: object
   properties:
