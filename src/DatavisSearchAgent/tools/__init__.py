@@ -18,10 +18,10 @@ DatavisSearchAgent tools package
 
 from .http_server_tool import http_server
 from .interactive_python_executor_tool import interactive_python_executor
-from .kaggle_download_tool import kaggle_download
+from .KaggleDownload_tool import KaggleDownload
 
 __all__ = [
     'http_server',
     'interactive_python_executor',
-    'kaggle_download',
+    'KaggleDownload',
 ]

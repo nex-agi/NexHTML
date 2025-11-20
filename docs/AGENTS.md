@@ -104,7 +104,7 @@ HTTP Service Display
 |-----------|----------------|-------------|
 | HTTPServer | `http_server` | `tools/http_server.yaml` |
 | InteractivePythonExecutor | `interactive_python_executor` | `tools/interactive_python_executor.yaml` |
-| KaggleDownload | `kaggle_download` | `tools/kaggle_download.yaml` |
+| KaggleDownload | `KaggleDownload` | `tools/KaggleDownload.yaml` |
 | WebSearch | `web_search` | Built-in |
 | WebRead | `web_read` | Built-in |
 | Read / Write / LS / Bash | File & System Operations | Built-in |

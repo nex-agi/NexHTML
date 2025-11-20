@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-name: kaggle_download
+name: KaggleDownload
 description: >-
   Kaggle dataset download tool. Uses the kagglehub library to download the specified Kaggle dataset to the specified path.
   The data will be automatically downloaded and extracted to the target directory.
@@ -22,30 +22,6 @@ description: >-
   2. Alternative: Use the ~/.kaggle/kaggle.json file (traditional method)
 
   How to obtain API credentials: Log in to Kaggle → Account → API → Create New API Token
-
-  !!!Note: REMEMBER YOU MUST use VALID tool call format!!!
-  The VALID tool call format for kaggle_download is either leading by <tool_use> or <use_parallel_tool_calls> tag:
-  !For a single kaggle_download tool call, use:
-    <tool_use>
-      <tool_name>kaggle_download</tool_name>
-      <parameter>
-        <dataset_name>...</dataset_name>
-        <download_path>...</download_path>
-      </parameter>
-    </tool_use>
-
-  !For parallel execution of multiple tools that include kaggle_download, use:
-    <use_parallel_tool_calls>
-    <parallel_tool>
-      <tool_name>tool1</tool_name>
-      <parameter>...</parameter>
-    </parallel_tool>
-    <parallel_tool>
-      <tool_name>tool2</tool_name>
-      <parameter>...</parameter>
-    </parallel_tool>
-    </use_parallel_tool_calls>
-  !!!DO NOT USE INVALID FORMAT, Only use <tool_use> or <use_parallel_tool_calls>!!!
 input_schema:
   type: object
   properties:
