@@ -28,7 +28,7 @@ except ImportError:
     pass
 
 
-def kaggle_download(dataset_name: str, download_path: str) -> Dict[str, Any]:
+def KaggleDownload(dataset_name: str, download_path: str) -> Dict[str, Any]:
     """
     Download a Kaggle dataset to the specified path using kagglehub library.
     Supports reading Kaggle authentication info from environment variables:
@@ -44,7 +44,7 @@ def kaggle_download(dataset_name: str, download_path: str) -> Dict[str, Any]:
     Returns:
         Dict[str, Any]: Contains the following fields:
             - success: True if download succeeded, False otherwise
-            - tool_name: "kaggle_download"
+            - tool_name: "KaggleDownload"
             - dataset_name: Name of the downloaded dataset (on success)
             - download_path: Final path where data was saved (on success)
             - cache_path: Kagglehub cache path (on success)
@@ -69,7 +69,7 @@ def kaggle_download(dataset_name: str, download_path: str) -> Dict[str, Any]:
         if "/" not in dataset_name:
             return {
                 "success": False,
-                "tool_name": "kaggle_download",
+                "tool_name": "KaggleDownload",
                 "error": f"Invalid dataset name format: {dataset_name}. Expected format: 'username/dataset-name'",
                 "error_type": "ValueError"
             }
@@ -97,7 +97,7 @@ def kaggle_download(dataset_name: str, download_path: str) -> Dict[str, Any]:
 
         return {
             "success": True,
-            "tool_name": "kaggle_download",
+            "tool_name": "KaggleDownload",
             "dataset_name": dataset_name,
             "download_path": target_path,
             "cache_path": cache_path,
@@ -108,14 +108,14 @@ def kaggle_download(dataset_name: str, download_path: str) -> Dict[str, Any]:
     except ImportError:
         return {
             "success": False,
-            "tool_name": "kaggle_download",
+            "tool_name": "KaggleDownload",
             "error": "kagglehub library is not installed. Please install it with: pip install kagglehub",
             "error_type": "ImportError"
         }
     except Exception as e:
         return {
             "success": False,
-            "tool_name": "kaggle_download",
+            "tool_name": "KaggleDownload",
             "error": str(e),
             "error_type": type(e).__name__
         }

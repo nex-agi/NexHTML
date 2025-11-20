@@ -27,9 +27,9 @@ tools:
     yaml_path: tools/interactive_python_executor.yaml
     binding: src.DatavisSearchAgent.tools.interactive_python_executor_tool:interactive_python_executor
 
-  - name: kaggle_download
-    yaml_path: tools/kaggle_download.yaml
-    binding: src.DatavisSearchAgent.tools.kaggle_download_tool:kaggle_download
+  - name: KaggleDownload
+    yaml_path: tools/KaggleDownload.yaml
+    binding: src.DatavisSearchAgent.tools.KaggleDownload_tool:KaggleDownload
 
   # === File Operations ===
   - name: Read
