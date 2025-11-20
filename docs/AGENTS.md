@@ -66,4 +66,57 @@ Screenshot Preview
 
 ---
 
+## 📈 DatavisSearchAgent
+
+**Role**: Data Visualization & Analysis Expert
+
+**Complete Workflow**:
+```
+User Request
+  ↓
+Session Directory Creation (tmp/datavis_search/{timestamp}_{lang}_{topic}/)
+  ↓
+Data Collection Phase
+  ├─ Multi-source Web Search
+  ├─ Kaggle Dataset Download (optional)
+  └─ Data Download & Structuring
+  ↓
+Python Analysis Phase
+  ├─ Stateful Python Execution
+  ├─ Data Exploration (pandas/numpy)
+  └─ Chart Planning
+  ↓
+Dashboard Generation Phase
+  ├─ Plotly.js Chart Creation
+  ├─ PapaParse CSV Integration
+  └─ HTML Dashboard Assembly
+  ↓
+HTTP Service Display
+  └─ Non-blocking Server Launch (port 8765)
+```
+
+**Configuration**: `src/DatavisSearchAgent/config.yaml`
+
+**System Prompt**: `src/DatavisSearchAgent/system-prompt.md`
+
+**Core Tools**:
+| Tool Name | Bound Function | Config File |
+|-----------|----------------|-------------|
+| HTTPServer | `http_server` | `tools/http_server.yaml` |
+| InteractivePythonExecutor | `interactive_python_executor` | `tools/interactive_python_executor.yaml` |
+| KaggleDownload | `kaggle_download` | `tools/kaggle_download.yaml` |
+| WebSearch | `web_search` | Built-in |
+| WebRead | `web_read` | Built-in |
+| Read / Write / LS / Bash | File & System Operations | Built-in |
+| TodoWrite | Task Management | Built-in |
+
+**Key Features**:
+- **Stateful Python Execution**: Variables persist across multiple tool calls for iterative data exploration
+- **UV Package Management**: All Python dependencies managed through UV for reproducibility
+- **Automatic Port Selection**: HTTP server automatically finds available ports to avoid conflicts
+- **Session Isolation**: Each task creates an isolated working directory with timestamp and topic naming
+- **Multi-format Data Support**: CSV, XLSX, JSON with automatic parsing and structuring
+
+---
+
 [← Back to Main README](../README.md)

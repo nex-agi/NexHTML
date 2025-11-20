@@ -1,4 +1,6 @@
-.env
+tmp
+!.env.example
+.env**
 pdf/*
 __pycache__
 *.pyc

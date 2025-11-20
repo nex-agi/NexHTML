@@ -5,7 +5,7 @@
 [![Python Version](https://img.shields.io/badge/python-3.13+-blue.svg)](https://www.python.org/downloads/)
 [![Framework](https://img.shields.io/badge/framework-NexAU-orange.svg)](https://github.com/nex-agi/NexAU)
 
-**Intelligent AI Agent Collection Based on NexAU Framework, Specializing in HTML Generation, Academic Poster Creation, and More**
+**Intelligent AI Agent Collection Based on NexAU Framework, Specializing in HTML Generation, Academic Poster Creation, Data Visualization, and More**
 
 [English](README.md) | [中文](README_CN.md)
 
@@ -64,6 +64,24 @@ Automatically converts academic papers (PDF) into visually stunning academic pos
 - Conference Poster Generation
 - Academic Presentation Materials
 - Research Showcase and Exhibition
+
+### 📈 DatavisSearchAgent - Data Visualization & Analysis System
+
+End-to-end data visualization agent that transforms data topics into interactive dashboards with charts and insights.
+
+**Core Features:**
+- 🔍 **Systematic Data Retrieval** - Multi-source search with keyword expansion and cross-validation
+- 🧹 **Data Engineering** - Structured extraction, cleaning, and quality assessment
+- 🐍 **Python Analysis** - Stateful Python execution with pandas/numpy for data exploration
+- 📊 **Interactive Dashboards** - Plotly-based HTML dashboards with real-time CSV data loading
+- 🌐 **HTTP Service** - Non-blocking local server for dashboard display
+- 📦 **Kaggle Integration** - Direct dataset download from Kaggle platform
+
+**Use Cases:**
+- Trend Analysis and Reporting
+- Dataset Exploration and Visualization
+- Business Intelligence Dashboards
+- Academic Data Analysis
 
 ---
 
@@ -204,6 +222,29 @@ uv run mineru-api
 
 # Start Agent
 uv run src/Paper2PosterAgent/start.py
+```
+
+#### Launch DatavisSearchAgent
+
+**Prerequisites:**
+
+Before launching DatavisSearchAgent, you need to:
+
+1. **Apply for Serper API Key** - Visit [Serper.dev](https://serper.dev/) to register and obtain your API key for web search functionality
+2. **Configure Kaggle API Credentials** (Optional) - For downloading datasets from Kaggle
+3. **Update `.env` file** with your credentials:
+   ```bash
+   SERPER_API_KEY=your_serper_api_key
+
+   # Optional: For Kaggle dataset downloads
+   KAGGLE_USERNAME=your_kaggle_username
+   KAGGLE_KEY=your_kaggle_api_key
+   ```
+
+**Launch Command:**
+
+```bash
+uv run python src/DatavisSearchAgent/start.py
 ```
 
 ### 6. Optional: Configure Langfuse Monitoring

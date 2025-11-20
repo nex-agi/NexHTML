@@ -1,0 +1,70 @@
+# Copyright (c) Nex-AGI. All rights reserved.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+name: DatavisSearchAgent
+max_context_tokens: 100000
+system_prompt: ./system-prompt.md
+system_prompt_type: jinja
+
+tools:
+  # === Custom Tools ===
+  - name: http_server
+    yaml_path: tools/http_server.yaml
+    binding: src.DatavisSearchAgent.tools.http_server_tool:http_server
+
+  - name: interactive_python_executor
+    yaml_path: tools/interactive_python_executor.yaml
+    binding: src.DatavisSearchAgent.tools.interactive_python_executor_tool:interactive_python_executor
+
+  - name: kaggle_download
+    yaml_path: tools/kaggle_download.yaml
+    binding: src.DatavisSearchAgent.tools.kaggle_download_tool:kaggle_download
+
+  # === File Operations ===
+  - name: Read
+    yaml_path: ../../nexau/examples/fake_claude_code/tools/Read.tool.yaml
+    binding: nexau.archs.tool.builtin.file_tools.file_read_tool:file_read_tool
+
+  - name: Write
+    yaml_path: ../../nexau/examples/fake_claude_code/tools/Write.tool.yaml
+    binding: nexau.archs.tool.builtin.file_tools.file_write_tool:file_write_tool
+
+  - name: LS
+    yaml_path: ../../nexau/examples/fake_claude_code/tools/Ls.tool.yaml
+    binding: nexau.archs.tool.builtin.ls_tool:ls_tool
+
+  # === System Operations ===
+  - name: Bash
+    yaml_path: ../../nexau/examples/fake_claude_code/tools/Bash.tool.yaml
+    binding: nexau.archs.tool.builtin.bash_tool:bash_tool
+
+  # === Web Tools ===
+  - name: WebSearch
+    yaml_path: ../../nexau/examples/deep_research/tools/WebSearch.yaml
+    binding: nexau.archs.tool.builtin.web_tool:web_search
+
+  - name: WebRead
+    yaml_path: ../../nexau/examples/deep_research/tools/WebRead.yaml
+    binding: nexau.archs.tool.builtin.web_tool:web_read
+
+  # === Task Management ===
+  - name: TodoWrite
+    yaml_path: ../../nexau/examples/fake_claude_code/tools/TodoWrite.tool.yaml
+    binding: nexau.archs.tool.builtin.todo_write:todo_write
+
+llm_config:
+  model:
+  base_url:
+  temperature: 0.6
+  max_tokens: 64000
